@@ -9,21 +9,9 @@ import {
 } from '../../const';
 import getNewArray from './getNewArray';
 
-interface Action {
-  type: string;
-  payload: {
-    size: number;
-    dough: string,
-    sauces: string,
-    cheeses: string,
-    veg: string,
-    meat: string,
-  }
-}
-
-const reducerPizza = (state: InitialStateType, action: Action) => {
+const reducerPizza = (state: InitialStateType, action: { type?: any; payload?: any }) => {
   const { payload } = action;
-  const { sauces, cheeses, veg, meat } = state;
+  const { cheeses, veg, meat } = state;
 
   switch (action.type) {
     case SIZE:
@@ -31,13 +19,14 @@ const reducerPizza = (state: InitialStateType, action: Action) => {
     case DOUGH:
       return { ...state, dough: payload.dough };
     case SAUCES:
-      return { ...state, sauces: [...getNewArray(sauces, payload.sauces)] };
+      return { ...state, sauces: payload.sauces };
     case CHEESES:
       return { ...state, cheeses: [...getNewArray(cheeses, payload.cheeses)] };
     case VEG:
       return { ...state, veg: [...getNewArray(veg, payload.veg)] };
     case MEAT:
       return { ...state, meat: [...getNewArray(meat, payload.meat)] };
+    default: return state;
   };
 };
 

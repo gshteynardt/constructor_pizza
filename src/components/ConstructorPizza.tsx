@@ -1,4 +1,4 @@
-import React, { memo, useReducer } from 'react';
+import { memo, useReducer } from 'react';
 
 import { InitialStateType } from '../types';
 import reducerPizza from './lib/reducer';
@@ -12,7 +12,14 @@ import {
   mockVegetables,
   mockMeat,
 } from '../mocks';
-
+import {
+  SIZE,
+  DOUGH,
+  SAUCES,
+  CHEESES,
+  VEG,
+  MEAT,
+} from '../const';
 const initialState: InitialStateType = {
   size: 30,
   dough: 'thin',
@@ -23,7 +30,7 @@ const initialState: InitialStateType = {
 };
 
 const ConstructorPizza = () => {
-  //const [state, dispatch] = useReducer(reducerPizza, initialState);
+  const [state, dispatch] = useReducer(reducerPizza, initialState);
 
   return (
     <form>
@@ -33,6 +40,7 @@ const ConstructorPizza = () => {
           <Radio
             label={`${item}cm`}
             name="size"
+            onChange={() => dispatch({ type: SIZE, payload: { size: item } })}
           />
         ))}
       </fieldset>
@@ -42,6 +50,7 @@ const ConstructorPizza = () => {
           <Radio
             label={item}
             name="dough"
+            onChange={() => dispatch({ type: DOUGH, payload: { dough: item } })}
           />
         ))}
       </fieldset>
@@ -51,6 +60,7 @@ const ConstructorPizza = () => {
           <Radio
             label={item}
             name="sauces"
+            onChange={() => dispatch({ type: SAUCES, payload: { sauces: item } })}
           />
         ))}
       </fieldset>
@@ -59,7 +69,8 @@ const ConstructorPizza = () => {
         {mockСheeses.map(item => (
           <Checkbox
             label={item}
-            name={item}
+            name="cheeses"
+            onChange={() => dispatch({ type: CHEESES, payload: { cheeses: item } })}
           />
         ))}
       </fieldset>
@@ -68,7 +79,8 @@ const ConstructorPizza = () => {
         {mockVegetables.map(item => (
           <Checkbox
             label={item}
-            name={item}
+            name="veg"
+            onChange={() => dispatch({ type: VEG, payload: { veg: item } })}
           />
         ))}
       </fieldset>
@@ -76,8 +88,10 @@ const ConstructorPizza = () => {
         <span>Meat</span>
         {mockMeat.map(item => (
           <Checkbox
+            key={item}
             label={item}
-            name={item}
+            name="meat"
+            onChange={() => dispatch({ type: MEAT, payload: { meat: item } })}
           />
         ))}
       </fieldset>
