@@ -1,8 +1,8 @@
 import React, { useEffect, useMemo } from 'react';
 
 import ConstructorPizza from './components/ConstructorPizza';
+import Button from './ui/Button';
 import useConstructorPizza from './hooks/useConstructorPizza';
-import './App.css';
 
 const App = () => {
 

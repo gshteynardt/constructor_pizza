@@ -1,0 +1,13 @@
+.Radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  &__Label {
+    cursor: pointer;
+
+    &:hover {
+      color: #9d9fa3;
+    }
+  }
+}

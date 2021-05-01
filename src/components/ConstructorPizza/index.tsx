@@ -1,8 +1,9 @@
 import { memo } from 'react';
 
-import useConstructorPizza from '../hooks/useConstructorPizza';
-import Checkbox from '../ui/Checkbox';
-import Radio from '../ui/Radio';
+import useConstructorPizza from '../../hooks/useConstructorPizza';
+import Fieldset from '../../ui/Fieldset';
+import Checkbox from '../../ui/Checkbox';
+import Radio from '../../ui/Radio';
 import {
   mockPizzaSize,
   mockDough,
@@ -10,7 +11,7 @@ import {
   mockСheeses,
   mockVegetables,
   mockMeat,
-} from '../mocks';
+} from '../../mocks';
 import {
   SIZE,
   DOUGH,
@@ -18,7 +19,7 @@ import {
   CHEESES,
   VEG,
   MEAT,
-} from '../const';
+} from '../../const';
 
 const ConstructorPizza = () => {
   const { state, dispatch } = useConstructorPizza();
@@ -26,8 +27,8 @@ const ConstructorPizza = () => {
 
   return (
     <form>
-      <fieldset>
-        <span>Size</span>
+      <Fieldset>
+        <span>Size: </span>
         {mockPizzaSize.map(item => (
           <Radio
             key={item}
@@ -37,9 +38,9 @@ const ConstructorPizza = () => {
             onChange={() => dispatch({ type: SIZE, payload: item })}
           />
         ))}
-      </fieldset>
-      <fieldset>
-        <span>Dough</span>
+      </Fieldset>
+      <Fieldset>
+        <span>Dough: </span>
         {mockDough.map(item => (
           <Radio
             key={item}
@@ -49,9 +50,9 @@ const ConstructorPizza = () => {
             onChange={() => dispatch({ type: DOUGH, payload: item })}
           />
         ))}
-      </fieldset>
-      <fieldset>
-        <span>Sauces</span>
+      </Fieldset>
+      <Fieldset>
+        <span>Sauces: </span>
         {mockSauces.map(item => (
           <Radio
             key={item}
@@ -61,9 +62,9 @@ const ConstructorPizza = () => {
             onChange={() => dispatch({ type: SAUCES, payload: item })}
           />
         ))}
-      </fieldset>
-      <fieldset>
-        <span>Сheeses</span>
+      </Fieldset>
+      <Fieldset>
+        <span>Сheeses: </span>
         {mockСheeses.map(item => (
           <Checkbox
             key={item}
@@ -72,9 +73,9 @@ const ConstructorPizza = () => {
             onChange={() => dispatch({ type: CHEESES, payload: item })}
           />
         ))}
-      </fieldset>
-      <fieldset>
-        <span>Vegetables</span>
+      </Fieldset>
+      <Fieldset>
+        <span>Vegetables: </span>
         {mockVegetables.map(item => (
           <Checkbox
             key={item}
@@ -84,9 +85,9 @@ const ConstructorPizza = () => {
             onChange={() => dispatch({ type: VEG, payload: item })}
           />
         ))}
-      </fieldset>
-      <fieldset>
-        <span>Meat</span>
+      </Fieldset>
+      <Fieldset>
+        <span>Meat: </span>
         {mockMeat.map(item => (
           <Checkbox
             key={item}
@@ -96,7 +97,7 @@ const ConstructorPizza = () => {
             onChange={() => dispatch({ type: MEAT, payload: item })}
           />
         ))}
-      </fieldset>
+      </Fieldset>
     </form>
   );
 };
