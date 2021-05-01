@@ -1,6 +1,7 @@
 import { memo, useReducer } from 'react';
 
 import { InitialStateType } from '../types';
+import useCalculatePrice from '../hooks/useCalculatePrice';
 import reducerPizza from './lib/reducer';
 import Checkbox from '../ui/Checkbox';
 import Radio from '../ui/Radio';
@@ -19,11 +20,13 @@ import {
   CHEESES,
   VEG,
   MEAT,
+  SMALL_SIZE_PIZZA,
 } from '../const';
+
 const initialState: InitialStateType = {
-  size: 30,
+  size: SMALL_SIZE_PIZZA,
   dough: 'thin',
-  sauces: [],
+  sauces: 'tomato',
   cheeses: [],
   veg: [],
   meat: [],
@@ -32,15 +35,20 @@ const initialState: InitialStateType = {
 const ConstructorPizza = () => {
   const [state, dispatch] = useReducer(reducerPizza, initialState);
 
+  const { price, compositionPizza } = useCalculatePrice(state);
+  console.log(price, compositionPizza);
+
   return (
     <form>
       <fieldset>
         <span>Size</span>
         {mockPizzaSize.map(item => (
           <Radio
+            key={item}
             label={`${item}cm`}
             name="size"
-            onChange={() => dispatch({ type: SIZE, payload: { size: item } })}
+            checked={item === state.size}
+            onChange={() => dispatch({ type: SIZE, payload: item })}
           />
         ))}
       </fieldset>
@@ -48,9 +56,11 @@ const ConstructorPizza = () => {
         <span>Dough</span>
         {mockDough.map(item => (
           <Radio
+            key={item}
             label={item}
             name="dough"
-            onChange={() => dispatch({ type: DOUGH, payload: { dough: item } })}
+            checked={item === state.dough}
+            onChange={() => dispatch({ type: DOUGH, payload: item })}
           />
         ))}
       </fieldset>
@@ -58,9 +68,11 @@ const ConstructorPizza = () => {
         <span>Sauces</span>
         {mockSauces.map(item => (
           <Radio
+            key={item}
             label={item}
             name="sauces"
-            onChange={() => dispatch({ type: SAUCES, payload: { sauces: item } })}
+            checked={item === state.sauces}
+            onChange={() => dispatch({ type: SAUCES, payload: item })}
           />
         ))}
       </fieldset>
@@ -68,9 +80,10 @@ const ConstructorPizza = () => {
         <span>Сheeses</span>
         {mockСheeses.map(item => (
           <Checkbox
+            key={item}
             label={item}
-            name="cheeses"
-            onChange={() => dispatch({ type: CHEESES, payload: { cheeses: item } })}
+            name="cheeses" checked={state.cheeses.includes(item)}
+            onChange={() => dispatch({ type: CHEESES, payload: item })}
           />
         ))}
       </fieldset>
@@ -78,9 +91,11 @@ const ConstructorPizza = () => {
         <span>Vegetables</span>
         {mockVegetables.map(item => (
           <Checkbox
+            key={item}
             label={item}
             name="veg"
-            onChange={() => dispatch({ type: VEG, payload: { veg: item } })}
+            checked={state.veg.includes(item)}
+            onChange={() => dispatch({ type: VEG, payload: item })}
           />
         ))}
       </fieldset>
@@ -91,7 +106,8 @@ const ConstructorPizza = () => {
             key={item}
             label={item}
             name="meat"
-            onChange={() => dispatch({ type: MEAT, payload: { meat: item } })}
+            checked={state.meat.includes(item)}
+            onChange={() => dispatch({ type: MEAT, payload: item })}
           />
         ))}
       </fieldset>

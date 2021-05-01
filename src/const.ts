@@ -5,6 +5,13 @@ const CHEESES = 'CHEESES';
 const VEG = 'VEG';
 const MEAT = 'MEAT';
 
+const SMALL_SIZE_PIZZA = 30;
+const LARGE_SIZE_PIZZA = 35;
+
+const INITIAL_PRICE = 200;
+const LARGE_PIZZA_PRICE = 50;
+const FILLER_PRICE = 29;
+
 export {
   SIZE,
   DOUGH,
@@ -12,4 +19,9 @@ export {
   CHEESES,
   VEG,
   MEAT,
+  SMALL_SIZE_PIZZA,
+  LARGE_SIZE_PIZZA,
+  INITIAL_PRICE,
+  LARGE_PIZZA_PRICE,
+  FILLER_PRICE, 
 };
