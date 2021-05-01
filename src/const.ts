@@ -1,3 +1,5 @@
+import { InitialStateType } from './types';
+
 const SIZE = 'SIZE';
 const DOUGH = 'DOUGH';
 const SAUCES = 'SAUCES';
@@ -12,6 +14,15 @@ const INITIAL_PRICE = 200;
 const LARGE_PIZZA_PRICE = 50;
 const FILLER_PRICE = 29;
 
+const INITIAL_STATE: InitialStateType = {
+  size: SMALL_SIZE_PIZZA,
+  dough: 'thin',
+  sauces: 'tomato',
+  cheeses: [],
+  veg: [],
+  meat: [],
+};
+
 export {
   SIZE,
   DOUGH,
@@ -23,5 +34,6 @@ export {
   LARGE_SIZE_PIZZA,
   INITIAL_PRICE,
   LARGE_PIZZA_PRICE,
-  FILLER_PRICE, 
+  FILLER_PRICE,
+  INITIAL_STATE,
 };

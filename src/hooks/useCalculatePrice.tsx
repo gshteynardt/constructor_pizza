@@ -11,7 +11,7 @@ import {
 const useCalculatePrice = (props: InitialStateType) => {
   const { size, dough, sauces, cheeses, veg, meat } = props;
   const [price, setPrice] = useState<number>(0);
-  const [compositionPizza, setCompositionPizza] = useState<(string | number)[]>([]);
+  const [composition, setComposition] = useState<(string | number)[]>([]);
 
   useEffect(() => {
     setPrice(INITIAL_PRICE);
@@ -22,10 +22,10 @@ const useCalculatePrice = (props: InitialStateType) => {
 
     [...cheeses, ...veg, ...meat].forEach(_ => setPrice(state => state + FILLER_PRICE));
 
-    setCompositionPizza([size, dough, sauces, ...cheeses, ...veg, ...meat]);
+    setComposition([size, dough, sauces, ...cheeses, ...veg, ...meat]);
   }, [cheeses, dough, meat, props, sauces, size, veg]);
 
-  return { price, compositionPizza };
+  return { price, composition };
 };
 
 export default useCalculatePrice;

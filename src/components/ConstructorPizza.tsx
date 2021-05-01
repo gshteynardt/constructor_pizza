@@ -1,8 +1,6 @@
-import { memo, useReducer } from 'react';
+import { memo } from 'react';
 
-import { InitialStateType } from '../types';
-import useCalculatePrice from '../hooks/useCalculatePrice';
-import reducerPizza from './lib/reducer';
+import useConstructorPizza from '../hooks/useConstructorPizza';
 import Checkbox from '../ui/Checkbox';
 import Radio from '../ui/Radio';
 import {
@@ -20,23 +18,11 @@ import {
   CHEESES,
   VEG,
   MEAT,
-  SMALL_SIZE_PIZZA,
 } from '../const';
 
-const initialState: InitialStateType = {
-  size: SMALL_SIZE_PIZZA,
-  dough: 'thin',
-  sauces: 'tomato',
-  cheeses: [],
-  veg: [],
-  meat: [],
-};
-
 const ConstructorPizza = () => {
-  const [state, dispatch] = useReducer(reducerPizza, initialState);
-
-  const { price, compositionPizza } = useCalculatePrice(state);
-  console.log(price, compositionPizza);
+  const { state, dispatch } = useConstructorPizza();
+  const { size, dough, sauces, veg, cheeses, meat } = state;
 
   return (
     <form>
@@ -47,7 +33,7 @@ const ConstructorPizza = () => {
             key={item}
             label={`${item}cm`}
             name="size"
-            checked={item === state.size}
+            checked={item === size}
             onChange={() => dispatch({ type: SIZE, payload: item })}
           />
         ))}
@@ -59,7 +45,7 @@ const ConstructorPizza = () => {
             key={item}
             label={item}
             name="dough"
-            checked={item === state.dough}
+            checked={item === dough}
             onChange={() => dispatch({ type: DOUGH, payload: item })}
           />
         ))}
@@ -71,7 +57,7 @@ const ConstructorPizza = () => {
             key={item}
             label={item}
             name="sauces"
-            checked={item === state.sauces}
+            checked={item === sauces}
             onChange={() => dispatch({ type: SAUCES, payload: item })}
           />
         ))}
@@ -82,7 +68,7 @@ const ConstructorPizza = () => {
           <Checkbox
             key={item}
             label={item}
-            name="cheeses" checked={state.cheeses.includes(item)}
+            name="cheeses" checked={cheeses.includes(item)}
             onChange={() => dispatch({ type: CHEESES, payload: item })}
           />
         ))}
@@ -94,7 +80,7 @@ const ConstructorPizza = () => {
             key={item}
             label={item}
             name="veg"
-            checked={state.veg.includes(item)}
+            checked={veg.includes(item)}
             onChange={() => dispatch({ type: VEG, payload: item })}
           />
         ))}
@@ -106,7 +92,7 @@ const ConstructorPizza = () => {
             key={item}
             label={item}
             name="meat"
-            checked={state.meat.includes(item)}
+            checked={meat.includes(item)}
             onChange={() => dispatch({ type: MEAT, payload: item })}
           />
         ))}

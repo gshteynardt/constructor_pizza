@@ -1,4 +1,4 @@
-import { InitialStateType } from '../../types';
+import { InitialStateType } from '../types';
 import {
   SIZE,
   DOUGH,
@@ -6,12 +6,12 @@ import {
   CHEESES,
   VEG,
   MEAT,
-} from '../../const';
+} from '../const';
 import getNewArray from './getNewArray';
 
 type ActionType = typeof SIZE | typeof DOUGH | typeof SAUCES | typeof CHEESES | typeof VEG | typeof MEAT;
 
-const reducerPizza = (state: InitialStateType, action: { type: ActionType; payload: any }) => {
+const reducer = (state: InitialStateType, action: { type: ActionType; payload: any }) => {
   const { payload } = action;
   const { cheeses, veg, meat } = state;
 
@@ -32,4 +32,4 @@ const reducerPizza = (state: InitialStateType, action: { type: ActionType; paylo
   };
 };
 
-export default reducerPizza;
+export default reducer;
