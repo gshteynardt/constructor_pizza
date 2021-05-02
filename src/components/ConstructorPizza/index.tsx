@@ -1,8 +1,9 @@
-import { memo } from 'react';
+import { memo, SyntheticEvent } from 'react';
 
 import useConstructorPizza from '../../hooks/useConstructorPizza';
 import Fieldset from '../../ui/Fieldset';
 import Checkbox from '../../ui/Checkbox';
+import Button from '../../ui/Button';
 import Radio from '../../ui/Radio';
 import {
   mockPizzaSize,
@@ -21,12 +22,17 @@ import {
   MEAT,
 } from '../../const';
 
-const ConstructorPizza = () => {
+interface Props {
+  onSubmit: (e: SyntheticEvent) => void;
+};
+
+const ConstructorPizza = (props: Props) => {
+  const { onSubmit } = props;
   const { state, dispatch } = useConstructorPizza();
   const { size, dough, sauces, veg, cheeses, meat } = state;
 
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <Fieldset>
         <span>Size: </span>
         {mockPizzaSize.map(item => (
@@ -98,6 +104,7 @@ const ConstructorPizza = () => {
           />
         ))}
       </Fieldset>
+      <Button>Show order</Button>
     </form>
   );
 };

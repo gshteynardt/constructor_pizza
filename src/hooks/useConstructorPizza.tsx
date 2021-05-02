@@ -8,6 +8,8 @@ const useConstructorPizza = () => {
   const [state, dispatch] = useReducer(reducer, INITIAL_STATE);
   const { price, composition } = useCalculatePrice(state);
 
+  console.log(price, composition);
+  
   return { state, dispatch, price, composition };
 };
 

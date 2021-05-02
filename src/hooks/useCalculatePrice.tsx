@@ -5,7 +5,7 @@ import {
   LARGE_SIZE_PIZZA,
   INITIAL_PRICE,
   LARGE_PIZZA_PRICE,
-  FILLER_PRICE,
+  TOPPING_PRICE,
 } from '../const';
 
 const useCalculatePrice = (props: InitialStateType) => {
@@ -20,7 +20,12 @@ const useCalculatePrice = (props: InitialStateType) => {
       setPrice(state => state + LARGE_PIZZA_PRICE);
     }
 
-    [...cheeses, ...veg, ...meat].forEach(_ => setPrice(state => state + FILLER_PRICE));
+    setPrice(
+      state =>
+        state +
+        (cheeses.length + veg.length + meat.length)
+        * TOPPING_PRICE,
+    );
 
     setComposition([size, dough, sauces, ...cheeses, ...veg, ...meat]);
   }, [cheeses, dough, meat, props, sauces, size, veg]);
