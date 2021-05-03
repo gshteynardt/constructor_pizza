@@ -8,8 +8,7 @@ import {
   MEAT,
 } from '../const';
 import getNewArray from './getNewArray';
-
-type ActionType = typeof SIZE | typeof DOUGH | typeof SAUCES | typeof CHEESES | typeof VEG | typeof MEAT;
+import { ActionType } from '../types';
 
 const reducer = (state: InitialStateType, action: { type: ActionType; payload: any }) => {
   const { payload } = action;
@@ -17,17 +16,17 @@ const reducer = (state: InitialStateType, action: { type: ActionType; payload: a
 
   switch (action.type) {
     case SIZE:
-      return { ...state, size: payload };
+      return { ...state, size: payload as number };
     case DOUGH:
-      return { ...state, dough: payload };
+      return { ...state, dough: payload as string };
     case SAUCES:
-      return { ...state, sauces: payload };
+      return { ...state, sauces: payload as string };
     case CHEESES:
-      return { ...state, cheeses: [...getNewArray(cheeses, payload)] };
+      return { ...state, cheeses: [...getNewArray(cheeses, payload as string)] };
     case VEG:
-      return { ...state, veg: [...getNewArray(veg, payload)] };
+      return { ...state, veg: [...getNewArray(veg, payload as string)] };
     case MEAT:
-      return { ...state, meat: [...getNewArray(meat, payload)] };
+      return { ...state, meat: [...getNewArray(meat, payload as string)] };
     default: return state;
   };
 };

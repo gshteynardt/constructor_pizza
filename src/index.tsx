@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+import CompositionPizzaProvider from './contexts/CompositionPizzaContext';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CompositionPizzaProvider>
+      <App />
+    </CompositionPizzaProvider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
