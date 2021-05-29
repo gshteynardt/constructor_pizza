@@ -2,12 +2,12 @@ import { useState, SyntheticEvent } from 'react';
 
 import ConstructorPizza from './components/ConstructorPizza';
 import TotalOrder from './components/TotalOrder';
-import useConstructorPizza from './hooks/useConstructorPizza';
+import { useSammaryPizzaContext } from './contexts/SummaryPizzaContext';
 
 const App = () => {
   const [showOrder, setShowOrder] = useState(false);
-  const { price, composition } = useConstructorPizza();
-  
+  const { state, price } = useSammaryPizzaContext();
+
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
     setShowOrder(old => !old);
@@ -16,7 +16,12 @@ const App = () => {
   return (
     <div className="App">
       <ConstructorPizza onSubmit={handleSubmit} />
-      {showOrder && <TotalOrder price={price} composition={composition}/>}
+      {showOrder && (
+        <TotalOrder
+          price={price}
+          summary={state}
+        />
+      )}
     </div>
   );
 };

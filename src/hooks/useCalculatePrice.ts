@@ -11,7 +11,6 @@ import {
 const useCalculatePrice = (props: InitialStateType) => {
   const { size, dough, sauces, cheeses, veg, meat } = props;
   const [price, setPrice] = useState<number>(0);
-  const [composition, setComposition] = useState<(string | number)[]>([]);
 
   useEffect(() => {
     setPrice(INITIAL_PRICE);
@@ -26,11 +25,9 @@ const useCalculatePrice = (props: InitialStateType) => {
         (cheeses.length + veg.length + meat.length)
         * TOPPING_PRICE,
     );
-
-    setComposition([size, dough, sauces, ...cheeses, ...veg, ...meat]);
   }, [cheeses, dough, meat, props, sauces, size, veg]);
 
-  return { price, composition };
+  return { price };
 };
 
 export default useCalculatePrice;

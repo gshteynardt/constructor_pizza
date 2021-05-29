@@ -1,3 +1,12 @@
+import {
+  SIZE,
+  DOUGH,
+  SAUCES,
+  CHEESES,
+  VEG,
+  MEAT,
+} from './const';
+
 export interface InitialStateType {
   size: number;
   dough: string;
@@ -6,3 +15,5 @@ export interface InitialStateType {
   veg: string[];
   meat: string[];
 }
+
+export type ActionType = typeof SIZE | typeof DOUGH | typeof SAUCES | typeof CHEESES | typeof VEG | typeof MEAT;
