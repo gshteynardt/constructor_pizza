@@ -4,17 +4,17 @@ import { InitialStateType } from '../../types';
 
 interface Props {
   price: number;
-  composition: InitialStateType;
+  summary: InitialStateType;
 }
 
 const TotalOrder = (props: Props) => {
-  const { price, composition } = props;
-  const compositionArray = Object.entries(composition).map(item => item.flat());
+  const { price, summary } = props;
+  const sammaryArray = Object.entries(summary).map(item => item.flat());
 
   return (
     <div>
       <span>Total: {price}</span>
-      {compositionArray.map(item => (
+      {sammaryArray.map(item => (
         <div key={item[0]}>
           <span>{item[0]}: </span>
           <span>{item.slice(1).join(', ')}</span>

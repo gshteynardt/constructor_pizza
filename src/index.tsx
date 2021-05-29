@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import CompositionPizzaProvider from './contexts/CompositionPizzaContext';
+import CompositionPizzaProvider from './contexts/SummaryPizzaContext';
 import './index.scss';
 import App from './App';
 import reportWebVitals from './reportWebVitals';

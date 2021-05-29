@@ -2,11 +2,11 @@ import { useState, SyntheticEvent } from 'react';
 
 import ConstructorPizza from './components/ConstructorPizza';
 import TotalOrder from './components/TotalOrder';
-import { useCompositionContext } from './contexts/CompositionPizzaContext';
+import { useSammaryPizzaContext } from './contexts/SummaryPizzaContext';
 
 const App = () => {
   const [showOrder, setShowOrder] = useState(false);
-  const { state, price } = useCompositionContext();
+  const { state, price } = useSammaryPizzaContext();
 
   const handleSubmit = (e: SyntheticEvent) => {
     e.preventDefault();
@@ -19,7 +19,7 @@ const App = () => {
       {showOrder && (
         <TotalOrder
           price={price}
-          composition={state}
+          summary={state}
         />
       )}
     </div>

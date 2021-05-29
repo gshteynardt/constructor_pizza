@@ -1,18 +1,12 @@
 import { memo, SyntheticEvent } from 'react';
 
-import { useCompositionContext } from '../../contexts/CompositionPizzaContext';
+import { useSammaryPizzaContext } from '../../contexts/SummaryPizzaContext';
+import usePizzaTopping from '../../hooks/usePizzaTopping';
 import Fieldset from '../../ui/Fieldset';
 import Checkbox from '../../ui/Checkbox';
 import Button from '../../ui/Button';
 import Radio from '../../ui/Radio';
-import {
-  mockPizzaSize,
-  mockDough,
-  mockSauces,
-  mockСheeses,
-  mockVegetables,
-  mockMeat,
-} from '../../mocks';
+
 import {
   SIZE,
   DOUGH,
@@ -28,15 +22,16 @@ interface Props {
 
 const ConstructorPizza = (props: Props) => {
   const { onSubmit } = props;
-  const { state, dispatch } = useCompositionContext();
+  const { state, dispatch } = useSammaryPizzaContext();
   const { size, dough, sauces, veg, cheeses, meat } = state;
+  const { toppings } = usePizzaTopping();
 
   return (
     <>
       <form onSubmit={onSubmit}>
         <Fieldset>
           <span>Size: </span>
-          {mockPizzaSize.map(item => (
+          {toppings.size.map(item => (
             <Radio
               key={item}
               label={`${item}cm`}
@@ -48,7 +43,7 @@ const ConstructorPizza = (props: Props) => {
         </Fieldset>
         <Fieldset>
           <span>Dough: </span>
-          {mockDough.map(item => (
+          {toppings.dough.map(item => (
             <Radio
               key={item}
               label={item}
@@ -60,7 +55,7 @@ const ConstructorPizza = (props: Props) => {
         </Fieldset>
         <Fieldset>
           <span>Sauces: </span>
-          {mockSauces.map(item => (
+          {toppings.sauces.map(item => (
             <Radio
               key={item}
               label={item}
@@ -72,7 +67,7 @@ const ConstructorPizza = (props: Props) => {
         </Fieldset>
         <Fieldset>
           <span>Сheeses: </span>
-          {mockСheeses.map(item => (
+          {toppings.cheeses.map(item => (
             <Checkbox
               key={item}
               label={item}
@@ -83,7 +78,7 @@ const ConstructorPizza = (props: Props) => {
         </Fieldset>
         <Fieldset>
           <span>Vegetables: </span>
-          {mockVegetables.map(item => (
+          {toppings.vegetables.map(item => (
             <Checkbox
               key={item}
               label={item}
@@ -95,7 +90,7 @@ const ConstructorPizza = (props: Props) => {
         </Fieldset>
         <Fieldset>
           <span>Meat: </span>
-          {mockMeat.map(item => (
+          {toppings.meat.map(item => (
             <Checkbox
               key={item}
               label={item}
