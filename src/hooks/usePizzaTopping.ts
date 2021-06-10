@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 import { mockPizzaConfig } from '../mocks';
 
 export default () => {
-  const [toppings, setToppings] = useState<typeof mockPizzaConfig>(mockPizzaConfig);
+  const [toppings] = useState<typeof mockPizzaConfig>(mockPizzaConfig);
 
   return { toppings };
 };

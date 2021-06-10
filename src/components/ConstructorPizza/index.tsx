@@ -71,7 +71,8 @@ const ConstructorPizza = (props: Props) => {
             <Checkbox
               key={item}
               label={item}
-              name="cheeses" checked={cheeses.includes(item)}
+              name="cheeses" 
+              checked={cheeses.includes(item)}
               onChange={() => dispatch({ type: CHEESES, payload: item })}
             />
           ))}
