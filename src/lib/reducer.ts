@@ -12,7 +12,7 @@ import { ActionType } from '../types';
 
 const reducer = (state: InitialStateType, action: { type: ActionType; payload: any }) => {
   const { payload } = action;
-  const { cheeses, veg, meat } = state;
+  const { cheeses, vegetables, meat } = state;
 
   switch (action.type) {
     case SIZE:
@@ -24,7 +24,7 @@ const reducer = (state: InitialStateType, action: { type: ActionType; payload: a
     case CHEESES:
       return { ...state, cheeses: [...getNewArray(cheeses, payload as string)] };
     case VEG:
-      return { ...state, veg: [...getNewArray(veg, payload as string)] };
+      return { ...state, vegetables: [...getNewArray(vegetables, payload as string)] };
     case MEAT:
       return { ...state, meat: [...getNewArray(meat, payload as string)] };
     default: return state;

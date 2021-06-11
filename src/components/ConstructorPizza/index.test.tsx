@@ -52,9 +52,15 @@ describe('ConstructorPizza', () => {
         <ConstructorPizza onSubmit={onSubmit} />
       </SammaryPizzaProvider>
     );
-    const radioSizeElem = screen.getByLabelText('35cm');
-    fireEvent.click(radioSizeElem);
-    expect(radioSizeElem).toBeChecked();
+    const radioSizeSmallElem = screen.getByLabelText('30cm');
+    const radioSizeMediumElem = screen.getByLabelText('35cm');
+
+    expect(radioSizeSmallElem).toBeChecked();
+    expect(radioSizeMediumElem).not.toBeChecked();
+
+    fireEvent.click(radioSizeMediumElem);
+    expect(radioSizeSmallElem).not.toBeChecked();
+    expect(radioSizeMediumElem).toBeChecked();
   });
 
   it('changes value pizza dough', () => {

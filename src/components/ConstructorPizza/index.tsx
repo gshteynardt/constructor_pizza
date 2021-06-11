@@ -23,7 +23,7 @@ interface Props {
 const ConstructorPizza = (props: Props) => {
   const { onSubmit } = props;
   const { state, dispatch } = useSammaryPizzaContext();
-  const { size, dough, sauces, veg, cheeses, meat } = state;
+  const { size, dough, sauces, vegetables, cheeses, meat } = state;
   const { toppings } = usePizzaTopping();
 
   return (
@@ -84,7 +84,7 @@ const ConstructorPizza = (props: Props) => {
               key={item}
               label={item}
               name="veg"
-              checked={veg.includes(item)}
+              checked={vegetables.includes(item)}
               onChange={() => dispatch({ type: VEG, payload: item })}
             />
           ))}
