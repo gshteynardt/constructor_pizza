@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import TotalOrder from './index';
 
@@ -9,7 +9,8 @@ const sammary = {
   cheeses: ['mozzarella', 'dorblue', 'chedar'],
   vegetables: ['tomato', 'mushroom', 'pepper'],
   meat: ['bacon', 'pepperoni', 'ham'],
-}
+};
+
 describe('TotalOrder', () => {
   it('renders correctly', () => {
     const { container } = render(<TotalOrder price={511} summary={sammary} />);
@@ -22,4 +23,4 @@ describe('TotalOrder', () => {
     expect(container).toContainHTML('vegetables: tomato, mushroom, pepper');
     expect(container).toContainHTML('meat: bacon, pepperoni, ham');
   })
-})
+});

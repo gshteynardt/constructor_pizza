@@ -52,6 +52,7 @@ describe('ConstructorPizza', () => {
         <ConstructorPizza onSubmit={onSubmit} />
       </SammaryPizzaProvider>
     );
+
     const radioSizeSmallElem = screen.getByLabelText('30cm');
     const radioSizeMediumElem = screen.getByLabelText('35cm');
 
@@ -71,6 +72,7 @@ describe('ConstructorPizza', () => {
         <ConstructorPizza onSubmit={onSubmit} />
       </SammaryPizzaProvider>
     );
+
     const radioDoughFluffy = screen.getByLabelText('fluffy');
     const radioDoughThin = screen.getByLabelText('thin');
 
@@ -87,6 +89,7 @@ describe('ConstructorPizza', () => {
         <ConstructorPizza onSubmit={onSubmit} />
       </SammaryPizzaProvider>
     );
+
     const radioDoughFluffy = screen.getByLabelText('fluffy');
     const radioDoughThin = screen.getByLabelText('thin');
 
