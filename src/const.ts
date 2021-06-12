@@ -19,7 +19,7 @@ const INITIAL_STATE: InitialStateType = {
   dough: 'thin',
   sauces: 'tomato',
   cheeses: [],
-  veg: [],
+  vegetables: [],
   meat: [],
 };
 

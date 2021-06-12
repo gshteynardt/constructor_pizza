@@ -9,7 +9,7 @@ import {
 } from '../const';
 
 const useCalculatePrice = (props: InitialStateType) => {
-  const { size, dough, sauces, cheeses, veg, meat } = props;
+  const { size, cheeses, vegetables, meat } = props;
   const [price, setPrice] = useState<number>(0);
 
   useEffect(() => {
@@ -22,10 +22,10 @@ const useCalculatePrice = (props: InitialStateType) => {
     setPrice(
       state =>
         state +
-        (cheeses.length + veg.length + meat.length)
+        (cheeses.length + vegetables.length + meat.length)
         * TOPPING_PRICE,
     );
-  }, [cheeses, dough, meat, props, sauces, size, veg]);
+  }, [cheeses, meat, props, size, vegetables]);
 
   return { price };
 };

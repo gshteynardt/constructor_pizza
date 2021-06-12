@@ -16,8 +16,7 @@ const TotalOrder = (props: Props) => {
       <span>Total: {price}</span>
       {sammaryArray.map(item => (
         <div key={item[0]}>
-          <span>{item[0]}: </span>
-          <span>{item.slice(1).join(', ')}</span>
+          <span>{item[0]}: {item.slice(1).join(', ')}</span>
         </div>
       ))}
     </div>

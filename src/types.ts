@@ -12,7 +12,7 @@ export interface InitialStateType {
   dough: string;
   sauces: string;
   cheeses: string[];
-  veg: string[];
+  vegetables: string[];
   meat: string[];
 }
 
