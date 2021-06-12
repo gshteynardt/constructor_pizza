@@ -1,4 +1,4 @@
-import { createContext, useContext, useReducer, ReactNode, memo } from 'react';
+import { createContext, useContext, useReducer, ReactNode } from 'react';
 
 import useCalculatePrice from '../hooks/useCalculatePrice';
 import reducer from '../lib/reducer';
