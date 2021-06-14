@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 import CompositionPizzaProvider from './contexts/SummaryPizzaContext';
 import './index.scss';
@@ -8,9 +9,11 @@ import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <CompositionPizzaProvider>
-      <App />
-    </CompositionPizzaProvider>
+    <Router>
+      <CompositionPizzaProvider>
+        <App />
+      </CompositionPizzaProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root'),
 );

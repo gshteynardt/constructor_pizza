@@ -1,4 +1,6 @@
-import { InitialStateType } from './types';
+import { InitialStateType } from '../types';
+
+export * from './routes';
 
 const SIZE = 'SIZE';
 const DOUGH = 'DOUGH';
@@ -22,7 +24,7 @@ const INITIAL_STATE: InitialStateType = {
   vegetables: [],
   meat: [],
 };
-
+  
 export {
   SIZE,
   DOUGH,
